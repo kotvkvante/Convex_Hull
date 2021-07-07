@@ -1,4 +1,4 @@
-Implementation of the Graham scan using C and OpenGL.
+Implementation of the Graham scan using C, OpenGL and SDL2.
 
 Linker options: 
   -lmingw32 -lSDL2main -lSDL2 -lopengl32
