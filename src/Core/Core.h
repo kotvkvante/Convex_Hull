@@ -4,12 +4,18 @@
 #define True 1
 #define False 0
 
-#include <windows.h>
-#include <SDL.h>
 #include <glad/glad.h>
+#ifdef __unix__
+    #include <SDL2/SDL.h>
+    #include <GL/glu.h>
+#elif defined(_WIN32) || defined(WIN32)
+    #include <windows.h>
+    #include <SDL.h>
+    #include <GL/glu.h>
+#endif
+
 #include "../SideSrc/stb_easy_font.h"
 
-#include <GL/glu.h>
 #include <stdio.h>
 #include <sys/time.h>
 
@@ -23,7 +29,6 @@ typedef struct
 {
     float x, y;
 } TPoint;
-
 
 typedef struct
 {

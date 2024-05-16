@@ -1,5 +1,4 @@
 #include "GrahamAlg.h"
-#include <sys/time.h>
 
 float math_rotateABC(const TPoint* A, const TPoint* B, const TPoint* C)
 {
@@ -9,7 +8,6 @@ float math_rotateABC(const TPoint* A, const TPoint* B, const TPoint* C)
 int math_comparePoints(TGraph* m_Graph, const TPoint* a, const TPoint* b)
 {
     int tmp;
-    //printf("1\n");
     tmp = math_rotateABC(&m_Graph->m_Points[0], a, b);
     if (tmp < 0)
         return 1;
@@ -43,7 +41,6 @@ int math_grahmScan(TGraph* m_Graph)
             p[0] = tmp;
         }
     }
-
 
     //qsort_s(p + 2, m_Graph->m_Count - 2, sizeof(TPoint), math_comparePoints, m_Graph);
 
@@ -90,7 +87,6 @@ int math_grahmScan(TGraph* m_Graph)
 
     m_Graph->m_CHIndices = realloc(m_Graph->m_CHIndices, m_Graph->m_CHCount * sizeof(int));
     m_Graph->m_CHShow = True;
-
 
     free(p);
 

@@ -1,6 +1,6 @@
-#include "src/Core/Core.h"
-#include "src/Graphics/Graphics.h"
-#include "src/Input/Input.h"
+#include "Core/Core.h"
+#include "Graphics/Graphics.h"
+#include "Input/Input.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,4 +28,3 @@ int main(int argc, char** argv)
     printf(">Thx<\n");
     return 1;
 }
-

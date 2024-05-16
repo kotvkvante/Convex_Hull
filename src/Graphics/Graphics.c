@@ -1,7 +1,6 @@
 #include "Graphics.h"
 #include "../Math/Matrix.h"
 
-
 int InitOpenGL(TCore* Core)
 {
 
@@ -25,7 +24,6 @@ int InitOpenGL(TCore* Core)
     return 1;
 }
 
-
 int InitSDL(TCore* Core)
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -34,7 +32,6 @@ int InitSDL(TCore* Core)
     }
     Core->m_Graphics->m_Height = 768;
     Core->m_Graphics->m_Width  = 768;
-
 
     Core->m_Window = SDL_CreateWindow("Convex Hull",
                                       SDL_WINDOWPOS_CENTERED,
@@ -54,13 +51,13 @@ int InitSDL(TCore* Core)
     return 1;
 }
 
-
 int CloseOpenGL(TCore* Core)
 {
     glDeleteProgram(Core->m_Graphics->program.ID);
     free(Core->m_Graphics);
     return 1;
 }
+
 int CloseSDL(TCore* Core)
 {
     SDL_GL_DeleteContext(Core->m_Context);
@@ -69,8 +66,6 @@ int CloseSDL(TCore* Core)
 
     return 1;
 }
-
-
 
 const float d = 0.02;
 float Axis[] =
@@ -82,7 +77,6 @@ float Axis[] =
     1, 0,
     1-d, 0-d,
 };
-
 
 void DrawGraphPoints(TCore* Core)
 {
@@ -118,8 +112,6 @@ void DrawConvexHull(TCore* Core)
 
     glDrawElements(GL_LINE_LOOP, gh->m_CHCount, GL_UNSIGNED_INT, gh->m_CHIndices);
 
-
-
     glUniform3f(gs->program.colorLocation, 1.0f, 1.0f, 1.0f);
     glDrawElements(GL_POINTS, gh->m_CHCount, GL_UNSIGNED_INT, gh->m_CHIndices);
 }
@@ -148,7 +140,8 @@ void RenderFrame(TCore* Core)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     char us_c[16];
-    sprintf (us_c, "us: %I64u" , Core->m_Graph->m_MicroSeconds );
+    // sprintf (us_c, "us: %I64u" , Core->m_Graph->m_MicroSeconds );
+    sprintf (us_c, "us: %lu" , Core->m_Graph->m_MicroSeconds );
     DrawString(Core->m_Graphics, 0, 0, us_c, .6f, .6f, 1.0f);
 
     DrawAxis(Core->m_Graphics, 90);
@@ -303,4 +296,3 @@ void DrawString(TGraphics* m_Graphics, float x, float y, char *text, float r, fl
     glEnableVertexAttribArray(m_Graphics->program.vertexLocation);
     glDrawArrays(GL_QUADS, 0, num_quads*4);
 }
-
